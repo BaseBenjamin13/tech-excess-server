@@ -3,8 +3,8 @@ from django.shortcuts import render
 
 from django.http import JsonResponse
 from rest_framework import generics
-from .serializers import MonitorsSerializer, KeyboardsSerializer, MousesSerializer
-from .models import Monitors, KeyBoard, Mouse
+from .serializers import MonitorsSerializer, KeyboardsSerializer, MousesSerializer, HeadPhonesSerializer
+from .models import Monitors, KeyBoard, Mouse, HeadPhone
 
 # Create your views here.
 
@@ -21,6 +21,9 @@ class MousesList(generics.ListCreateAPIView):
     queryset = Mouse.objects.all()
     serializer_class = MousesSerializer
 
+class HeadPhonesList(generics.ListCreateAPIView):
+    queryset = HeadPhone.objects.all()
+    serializer_class = HeadPhonesSerializer
 
 
 
