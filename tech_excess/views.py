@@ -13,6 +13,11 @@ class MonitorsList(generics.ListCreateAPIView):
     queryset = Monitors.objects.all()
     serializer_class = MonitorsSerializer
 
+class MonitorDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Monitors.objects.all()
+    serializer_class = MonitorsSerializer
+
+
 class KeyboardsList(generics.ListCreateAPIView):
     queryset = KeyBoard.objects.all()
     serializer_class = KeyboardsSerializer
