@@ -43,6 +43,9 @@ class HeadPhonesList(generics.ListCreateAPIView):
     queryset = HeadPhone.objects.all()
     serializer_class = HeadPhonesSerializer
 
+class HeadPhoneDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = HeadPhone.objects.all()
+    serializer_class = HeadPhonesSerializer
 
 
 

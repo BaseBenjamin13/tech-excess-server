@@ -10,4 +10,5 @@ urlpatterns = [
     path('mouses/', views.MousesList.as_view(), name='mouses_list'),
     path('mouses/<int:pk>', views.MouseDetail.as_view(), name='mouses_detail'),
     path('headphones/', views.HeadPhonesList.as_view(), name='headphones_list'),
+    path('headphones/<int:pk>', views.HeadPhoneDetail.as_view(), name='headphones_detail'),
 ]
