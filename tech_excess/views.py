@@ -33,6 +33,10 @@ class MousesList(generics.ListCreateAPIView):
     queryset = Mouse.objects.all()
     serializer_class = MousesSerializer
 
+class MouseDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Mouse.objects.all()
+    serializer_class = MousesSerializer
+
 
 #Headphones
 class HeadPhonesList(generics.ListCreateAPIView):

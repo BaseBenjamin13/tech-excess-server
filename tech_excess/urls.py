@@ -8,5 +8,6 @@ urlpatterns = [
     path('keyboards/', views.KeyboardsList.as_view(), name='keyboards_list'),
     path('keyboards/<int:pk>', views.KeyboardDetail.as_view(), name='keyboards_detail'),
     path('mouses/', views.MousesList.as_view(), name='mouses_list'),
+    path('mouses/<int:pk>', views.MouseDetail.as_view(), name='mouses_detail'),
     path('headphones/', views.HeadPhonesList.as_view(), name='headphones_list'),
 ]
