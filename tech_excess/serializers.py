@@ -31,7 +31,8 @@ class MonitorReviewSerializer(serializers.HyperlinkedModelSerializer):
     monitor = serializers.HyperlinkedRelatedField(
         view_name='monitors_detail',
         many=False,
-        read_only=True
+        read_only=False, 
+        queryset = Monitors.objects.all()
     )
     class Meta:
         model = MonitorReview

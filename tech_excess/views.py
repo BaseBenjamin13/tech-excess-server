@@ -8,6 +8,8 @@ from .models import Monitors, KeyBoard, Mouse, HeadPhone, MonitorReview
 
 # Create your views here.
 
+from rest_framework.permissions import AllowAny
+
 #Monitors 
 class MonitorsList(generics.ListCreateAPIView):
     queryset = Monitors.objects.all()
@@ -50,6 +52,7 @@ class HeadPhoneDetail(generics.RetrieveUpdateDestroyAPIView):
 
 #Reviews
 class MonitorReviewsList(generics.ListCreateAPIView):
+    permission_classes = (AllowAny,)
     queryset = MonitorReview.objects.all()
     serializer_class = MonitorReviewSerializer
 
