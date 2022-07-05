@@ -11,5 +11,6 @@ urlpatterns = [
     path('mouses/<int:pk>', views.MouseDetail.as_view(), name='mouses_detail'),
     path('headphones/', views.HeadPhonesList.as_view(), name='headphones_list'),
     path('headphones/<int:pk>', views.HeadPhoneDetail.as_view(), name='headphones_detail'),
-    path('reviews/', views.ReviewsList.as_view(), name='reviews_list'),
+    path('reviews/', views.MonitorReviewsList.as_view(), name='reviews_list'),
+    path('reviews/<int:pk>', views.MonitorReviewsDetail.as_view(), name='reviews_detail'),
 ]

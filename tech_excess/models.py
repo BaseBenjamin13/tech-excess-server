@@ -55,11 +55,8 @@ class HeadPhone(models.Model):
 
 
 
-class Review(models.Model):
-    monitor = models.ForeignKey(Monitors, null=True, on_delete=models.CASCADE, blank=True, db_constraint=False, related_name='monitor')
-    keyboard = models.ForeignKey(KeyBoard, null=True, on_delete=models.CASCADE, blank=True, db_constraint=False, related_name='keyboard')
-    mouse = models.ForeignKey(Mouse, null=True, on_delete=models.CASCADE, blank=True, db_constraint=False, related_name='mouse')
-    headphone = models.ForeignKey(HeadPhone, null=True, on_delete=models.CASCADE, blank=True, db_constraint=False, related_name='headphone')
+class MonitorReview(models.Model):
+    monitor = models.ForeignKey(Monitors, on_delete=models.CASCADE, related_name='reviews')
     author = models.CharField(max_length=50, default='unknown')
     body = models.TextField()
     rating = models.IntegerField()

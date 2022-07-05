@@ -1,11 +1,16 @@
 
 from rest_framework import serializers
-from .models import Monitors, KeyBoard, Mouse, HeadPhone, Review
+from .models import Monitors, KeyBoard, Mouse, HeadPhone, MonitorReview
 
 class MonitorsSerializer(serializers.HyperlinkedModelSerializer):
+    reviews = serializers.HyperlinkedRelatedField(
+        view_name='reviews_detail',
+        many=True,
+        read_only=True
+    )
     class Meta:
         model = Monitors
-        fields = ('id', 'title', 'brand', 'description', 'price', 'on_sale', 'featured_image_url', 'image_urls',)
+        fields = ('id', 'title', 'brand', 'description', 'price', 'on_sale', 'featured_image_url', 'image_urls', 'reviews',)
 
 class KeyboardsSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -22,8 +27,13 @@ class HeadPhonesSerializer(serializers.HyperlinkedModelSerializer):
         model = HeadPhone
         fields = ('id', 'title', 'brand', 'description', 'price', 'on_sale', 'featured_image_url', 'image_urls',)
 
-class ReviewSerializer(serializers.HyperlinkedModelSerializer):
+class MonitorReviewSerializer(serializers.HyperlinkedModelSerializer):
+    monitor = serializers.HyperlinkedRelatedField(
+        view_name='monitors_detail',
+        many=False,
+        read_only=True
+    )
     class Meta:
-        model = Review
-        fields = ('monitor', 'keyboard', 'mouse', 'headphone', 'author', 'body', 'rating',)
+        model = MonitorReview
+        fields = ('monitor', 'author', 'body', 'rating',)
 

@@ -1,11 +1,10 @@
-from typing import List
+
 from django.shortcuts import render
-# from .models import Monitors
 
 from django.http import JsonResponse
 from rest_framework import generics
-from .serializers import MonitorsSerializer, KeyboardsSerializer, MousesSerializer, HeadPhonesSerializer, ReviewSerializer
-from .models import Monitors, KeyBoard, Mouse, HeadPhone, Review
+from .serializers import MonitorsSerializer, KeyboardsSerializer, MousesSerializer, HeadPhonesSerializer, MonitorReviewSerializer
+from .models import Monitors, KeyBoard, Mouse, HeadPhone, MonitorReview
 
 # Create your views here.
 
@@ -50,8 +49,10 @@ class HeadPhoneDetail(generics.RetrieveUpdateDestroyAPIView):
 
 
 #Reviews
-class ReviewsList(generics.ListCreateAPIView):
-    queryset = Review.objects.all()
-    serializer_class = ReviewSerializer
+class MonitorReviewsList(generics.ListCreateAPIView):
+    queryset = MonitorReview.objects.all()
+    serializer_class = MonitorReviewSerializer
 
-
+class MonitorReviewsDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = MonitorReview.objects.all()
+    serializer_class = MonitorReviewSerializer
