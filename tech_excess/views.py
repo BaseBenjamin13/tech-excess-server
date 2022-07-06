@@ -26,6 +26,10 @@ class MonitorList(generics.ListCreateAPIView):
 class KeyboardList(generics.ListCreateAPIView):
     queryset = Item.objects.filter(category='keyboard')
     serializer_class = ItemsSerializer
+    
+class MouseList(generics.ListCreateAPIView):
+    queryset = Item.objects.filter(category='mouse')
+    serializer_class = ItemsSerializer
 
 
 #Reviews
