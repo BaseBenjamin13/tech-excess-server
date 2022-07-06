@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Monitors, KeyBoard, Mouse, HeadPhone, MonitorReview
+from .models import Item, ItemReview
 # Register your models here.
 
-admin.site.register(Monitors)
-admin.site.register(KeyBoard)
-admin.site.register(Mouse)
-admin.site.register(HeadPhone)
-admin.site.register(MonitorReview)
+admin.site.register(Item)
+# admin.site.register(KeyBoard)
+# admin.site.register(Mouse)
+# admin.site.register(HeadPhone)
+admin.site.register(ItemReview)
