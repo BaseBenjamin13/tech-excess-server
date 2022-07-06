@@ -18,6 +18,18 @@ class Item(models.Model):
     def __str__(self):
         return self.title
 
+
+class ItemReview(models.Model):
+    item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='reviews')
+    author = models.CharField(max_length=50, default='unknown')
+    body = models.TextField()
+    rating = models.IntegerField()
+
+    def __str__(self):
+        return self.author
+
+
+
 # class KeyBoard(models.Model):
 #     title = models.CharField(max_length=50, default='no title')
 #     brand = models.CharField(max_length=20, default='brand not found')
@@ -53,18 +65,6 @@ class Item(models.Model):
 
 #     def __str__(self):
 #         return self.title
-
-
-
-class ItemReview(models.Model):
-    monitor = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='reviews')
-    author = models.CharField(max_length=50, default='unknown')
-    body = models.TextField()
-    rating = models.IntegerField()
-
-    def __str__(self):
-        return self.author
-
 
 
 

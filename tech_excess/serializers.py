@@ -29,7 +29,7 @@ class ItemsSerializer(serializers.HyperlinkedModelSerializer):
 
 class ItemReviewSerializer(serializers.HyperlinkedModelSerializer):
     item = serializers.HyperlinkedRelatedField(
-        view_name='monitors_detail',
+        view_name='items_detail',
         many=False,
         read_only=False, 
         queryset = Item.objects.all()
