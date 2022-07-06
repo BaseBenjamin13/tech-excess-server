@@ -36,5 +36,5 @@ class ItemReviewSerializer(serializers.HyperlinkedModelSerializer):
     )
     class Meta:
         model = ItemReview
-        fields = ('item', 'author', 'body', 'rating',)
+        fields = ('id', 'item', 'author', 'body', 'rating',)
 
