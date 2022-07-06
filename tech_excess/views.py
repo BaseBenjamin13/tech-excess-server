@@ -43,6 +43,7 @@ class ItemReviewsList(generics.ListCreateAPIView):
     serializer_class = ItemReviewSerializer
 
 class ItemReviewsDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (AllowAny,)
     queryset = ItemReview.objects.all()
     serializer_class = ItemReviewSerializer
 
