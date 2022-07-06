@@ -15,12 +15,16 @@ class ItemList(generics.ListCreateAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemsSerializer
 
-class MonitorDetail(generics.RetrieveUpdateDestroyAPIView):
+class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemsSerializer
 
 class MonitorList(generics.ListCreateAPIView):
     queryset = Item.objects.filter(category='monitor')
+    serializer_class = ItemsSerializer
+
+class KeyboardList(generics.ListCreateAPIView):
+    queryset = Item.objects.filter(category='keyboard')
     serializer_class = ItemsSerializer
 
 
