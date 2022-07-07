@@ -1,8 +1,12 @@
 
+import email
 from django.db import models
 
 from django.contrib.postgres.fields import ArrayField
 # Create your models here.
+#https://www.youtube.com/watch?v=0d7cIfiydAc
+#user tutorial
+from django.contrib.auth.models import User
 
 
 class Item(models.Model):
@@ -24,6 +28,9 @@ class ItemReview(models.Model):
     author = models.CharField(max_length=50, default='unknown')
     body = models.TextField()
     rating = models.IntegerField()
+    #https://www.youtube.com/watch?v=0d7cIfiydAc
+    #user tutorial  
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews', null=True)
 
     def __str__(self):
         return self.author

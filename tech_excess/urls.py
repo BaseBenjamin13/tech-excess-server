@@ -11,6 +11,7 @@ urlpatterns = [
     path('headphones/', views.HeadphoneList.as_view(), name='headphones_list'),
     path('reviews/', views.ItemReviewsList.as_view(), name='reviews_list'),
     path('reviews/<int:pk>', views.ItemReviewsDetail.as_view(), name='reviews_detail'),
+    path('user/reviews', views.UsersReviewsList.as_view(), name='user_reviews_list'),
 ]
 
 

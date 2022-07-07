@@ -8,6 +8,7 @@ django = "*"
 psycopg2-binary = "*"
 django-extensions = "*"
 djangorestframework = "*"
+django-rest-knox = "*"
 
 [dev-packages]
 

@@ -2,13 +2,14 @@
 from django.shortcuts import render
 
 from django.http import JsonResponse
-from rest_framework import generics
+from rest_framework import generics , permissions
 from .serializers import ItemsSerializer,  ItemReviewSerializer
 from .models import Item, ItemReview
 
 # Create your views here.
 
 from rest_framework.permissions import AllowAny
+
 
 #Items
 class ItemList(generics.ListCreateAPIView):
@@ -47,6 +48,22 @@ class ItemReviewsDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = ItemReview.objects.all()
     serializer_class = ItemReviewSerializer
 
+
+#https://www.youtube.com/watch?v=0d7cIfiydAc
+#user tutorial
+#display reviews made by a user.
+class UsersReviewsList(generics.ListCreateAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    # queryset = ItemReview.objects.all()
+    serializer_class = ItemReviewSerializer
+
+    def get_queryset(self):
+        return self.request.user.reviews.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 
