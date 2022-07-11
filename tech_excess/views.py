@@ -50,6 +50,8 @@ class CreateReview(generics.ListCreateAPIView):
     ]
     queryset = ItemReview.objects.all()
     serializer_class = ItemReviewSerializer
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
 
 class ItemReviewsDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (AllowAny,)
