@@ -14,11 +14,3 @@ urlpatterns = [
     path('reviews/<int:pk>', views.ItemReviewsDetail.as_view(), name='reviews_detail'),
     path('user/reviews', views.UsersReviewsList.as_view(), name='user_reviews_list'),
 ]
-
-
-    # path('keyboards/', views.KeyboardsList.as_view(), name='keyboards_list'),
-    # path('keyboards/<int:pk>', views.KeyboardDetail.as_view(), name='keyboards_detail'),
-    # path('mouses/', views.MousesList.as_view(), name='mouses_list'),
-    # path('mouses/<int:pk>', views.MouseDetail.as_view(), name='mouses_detail'),
-    # path('headphones/', views.HeadPhonesList.as_view(), name='headphones_list'),
-    # path('headphones/<int:pk>', views.HeadPhoneDetail.as_view(), name='headphones_detail'),

@@ -73,33 +73,3 @@ class UsersReviewsList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-
-
-#Keyboards
-# class KeyboardsList(generics.ListCreateAPIView):
-#     queryset = KeyBoard.objects.all()
-#     serializer_class = KeyboardsSerializer
-
-# class KeyboardDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = KeyBoard.objects.all()
-#     serializer_class = KeyboardsSerializer
-
-
-# #Mouses
-# class MousesList(generics.ListCreateAPIView):
-#     queryset = Mouse.objects.all()
-#     serializer_class = MousesSerializer
-
-# class MouseDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = Mouse.objects.all()
-#     serializer_class = MousesSerializer
-
-
-# #Headphones
-# class HeadPhonesList(generics.ListCreateAPIView):
-#     queryset = HeadPhone.objects.all()
-#     serializer_class = HeadPhonesSerializer
-
-# class HeadPhoneDetail(generics.RetrieveUpdateDestroyAPIView):
-#     queryset = HeadPhone.objects.all()
-#     serializer_class = HeadPhonesSerializer
