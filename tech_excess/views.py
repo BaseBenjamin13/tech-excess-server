@@ -43,6 +43,14 @@ class ItemReviewsList(generics.ListCreateAPIView):
     queryset = ItemReview.objects.all()
     serializer_class = ItemReviewSerializer
 
+#Create review only if logged in.
+class CreateReview(generics.ListCreateAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    queryset = ItemReview.objects.all()
+    serializer_class = ItemReviewSerializer
+
 class ItemReviewsDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (AllowAny,)
     queryset = ItemReview.objects.all()
