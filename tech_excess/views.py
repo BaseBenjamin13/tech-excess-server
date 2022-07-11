@@ -53,10 +53,20 @@ class CreateReview(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
+
 class ItemReviewsDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (AllowAny,)
     queryset = ItemReview.objects.all()
     serializer_class = ItemReviewSerializer
+
+#delete or edit review
+class ItemReviewsChange(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    queryset = ItemReview.objects.all()
+    serializer_class = ItemReviewSerializer
+
 
 
 #https://www.youtube.com/watch?v=0d7cIfiydAc
