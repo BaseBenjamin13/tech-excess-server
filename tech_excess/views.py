@@ -3,8 +3,8 @@ from django.shortcuts import render
 
 from django.http import JsonResponse
 from rest_framework import generics , permissions
-from .serializers import ItemsSerializer,  ItemReviewSerializer
-from .models import Item, ItemReview
+from .serializers import ItemsSerializer,  ItemReviewSerializer, WishlistSerializer
+from .models import Item, ItemReview, Wishlist
 
 # Create your views here.
 
@@ -66,6 +66,16 @@ class ItemReviewsChange(generics.RetrieveUpdateDestroyAPIView):
     ]
     queryset = ItemReview.objects.all()
     serializer_class = ItemReviewSerializer
+
+
+#wishlists
+class WishlistList(generics.ListCreateAPIView):
+    queryset = Wishlist.objects.all()
+    serializer_class = WishlistSerializer
+
+class WishlistDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Wishlist.objects.all()
+    serializer_class = WishlistSerializer
 
 
 

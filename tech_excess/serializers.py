@@ -12,9 +12,15 @@ class ItemsSerializer(serializers.HyperlinkedModelSerializer):
         many=True,
         read_only=True
     )
+    wishlists = serializers.HyperlinkedRelatedField(
+        view_name='wishlists_detail',
+        many=True,
+        read_only=False, 
+        queryset = Wishlist.objects.all()
+    )
     class Meta:
         model = Item
-        fields = ('id', 'title', 'brand', 'category', 'description', 'price', 'on_sale', 'featured_image_url', 'image_urls', 'reviews',)
+        fields = ('id', 'title', 'brand', 'category', 'description', 'price', 'on_sale', 'featured_image_url', 'image_urls', 'wishlists', 'reviews',)
 
 
 class ItemReviewSerializer(serializers.HyperlinkedModelSerializer):
@@ -43,4 +49,4 @@ class WishlistSerializer(serializers.HyperlinkedModelSerializer):
     )
     class Meta:
         model = Wishlist
-        fields = ('id', 'name', 'items', 'owner',)
+        fields = ('id', 'name', 'owner', 'items',)
