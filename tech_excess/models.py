@@ -33,6 +33,12 @@ class ItemReview(models.Model):
     def __str__(self):
         return self.title
 
+class Wishlist(models.Model):
+    name = models.CharField(max_length=50, default='Wishlist')
+    items = models.ManyToManyField(Item)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='wishlists')
 
+    def __str__(self):
+        return self.name
 
 
