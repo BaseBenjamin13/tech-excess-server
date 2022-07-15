@@ -20,6 +20,15 @@ class ItemDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemsSerializer
 
+
+class ItemEdit(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    queryset = Item.objects.all()
+    serializer_class = ItemsSerializer
+
+
 class MonitorList(generics.ListCreateAPIView):
     queryset = Item.objects.filter(category='monitor')
     serializer_class = ItemsSerializer
@@ -70,12 +79,26 @@ class ItemReviewsChange(generics.RetrieveUpdateDestroyAPIView):
 
 #wishlists
 class WishlistList(generics.ListCreateAPIView):
-    queryset = Wishlist.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
     serializer_class = WishlistSerializer
+    def get_queryset(self):
+        return self.request.user.wishlists.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 class WishlistDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Wishlist.objects.all()
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
     serializer_class = WishlistSerializer
+    def get_queryset(self):
+        return self.request.user.wishlists.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 

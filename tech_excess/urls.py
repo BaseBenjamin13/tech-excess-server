@@ -5,6 +5,7 @@ from rest_framework.routers import DefaultRouter
 urlpatterns = [
     path('items/', views.ItemList.as_view(), name='items_list'),
     path('items/<int:pk>', views.ItemDetail.as_view(), name='items_detail'),
+    path('items/edit/<int:pk>', views.ItemEdit.as_view(), name='items_edit'),
     path('monitors/', views.MonitorList.as_view(), name='monitors_list'),
     path('keyboards/', views.KeyboardList.as_view(), name='keyboards_list'),
     path('mouses/', views.MouseList.as_view(), name='mouses_list'),
