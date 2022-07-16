@@ -8,6 +8,14 @@ from django.contrib.postgres.fields import ArrayField
 #user tutorial
 from django.contrib.auth.models import User
 
+class Cart(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='carts')
+    total = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.id
+
+
 class Wishlist(models.Model):
     name = models.CharField(max_length=50, default='Wishlist')
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='wishlists')
@@ -25,6 +33,7 @@ class Item(models.Model):
     featured_image_url = models.CharField(max_length=500, default='No image')
     image_urls = ArrayField(models.CharField(max_length=500, default='No image'), max_length=5)
     wishlists = models.ManyToManyField(Wishlist, related_name='items')
+    carts = models.ManyToManyField(Cart, related_name='items')
 
     def __str__(self):
         return self.title
