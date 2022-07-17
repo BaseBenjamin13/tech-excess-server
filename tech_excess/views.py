@@ -3,7 +3,7 @@ from django.shortcuts import render
 
 from django.http import JsonResponse
 from rest_framework import generics , permissions
-from .serializers import ItemsSerializer,  ItemReviewSerializer, WishlistSerializer
+from .serializers import ItemsSerializer,  ItemReviewSerializer, WishlistSerializer, CartSerializer
 from .models import Item, ItemReview, Wishlist
 
 # Create your views here.
@@ -96,6 +96,30 @@ class WishlistDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = WishlistSerializer
     def get_queryset(self):
         return self.request.user.wishlists.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
+#CARTS
+class CartList(generics.ListCreateAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    serializer_class = CartSerializer
+    def get_queryset(self):
+        return self.request.user.carts.all()
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+class CartDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    serializer_class = CartSerializer
+    def get_queryset(self):
+        return self.request.user.carts.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)

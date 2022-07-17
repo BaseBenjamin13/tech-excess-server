@@ -11,9 +11,8 @@ from django.contrib.auth.models import User
 class Cart(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='carts')
     total = models.IntegerField(default=0)
+    order_completed = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.id
 
 
 class Wishlist(models.Model):
