@@ -112,6 +112,17 @@ class CartList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
+#cart that is not completed yet:
+class CartInProgress(generics.ListCreateAPIView):
+    permission_classes = [
+        permissions.IsAuthenticated
+    ]
+    serializer_class = CartSerializer
+    def get_queryset(self):
+        return self.request.user.carts.filter(order_completed=False)
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 class CartDetail(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [
