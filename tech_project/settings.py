@@ -117,13 +117,14 @@ WSGI_APPLICATION = 'tech_project.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tech_excess',
-        'USER': 'techuser',
-        'PASSWORD': 'tech',
-        'HOST': 'localhost'
-    }
+    'default': dj_database_url.config(conn_max_age=600)
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'tech_excess',
+    #     'USER': 'techuser',
+    #     'PASSWORD': 'tech',
+    #     'HOST': 'localhost'
+    # }
 }
 
 
@@ -168,4 +169,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+STATIC_ROOT=os.path.join(BASE_DIR, "static/")
