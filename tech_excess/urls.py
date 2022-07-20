@@ -19,5 +19,6 @@ urlpatterns = [
     path('user/wishlists/<int:pk>', views.WishlistDetail.as_view(), name='wishlists_detail'),
     path('user/carts', views.CartList.as_view(), name='carts_list'),
     path('user/carts/current', views.CartInProgress.as_view(), name='carts_in_progress'),
+    path('user/carts/completed', views.CartCompleted.as_view(), name='carts_completed'),
     path('user/carts/<int:pk>', views.CartDetail.as_view(), name='carts_detail'),
 ]
